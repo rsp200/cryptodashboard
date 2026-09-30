@@ -29,7 +29,14 @@ class CoinController extends Controller
 
         $coins = Coin::orderBy('market_cap_rank')->get();
 
-        return view('coins.index', compact('coins', 'fromCache'));
+        $chartData = [
+            'labels' => $coins->pluck('name')->toArray(),
+            'prices' => $coins->pluck('current_price')->toArray(),
+            'marketCaps' => $coins->pluck('market_cap')->toArray(),
+            'changes' => $coins->pluck('price_change_percentage_24h')->toArray(),
+        ];
+
+        return view('coins.index', compact('coins', 'fromCache', 'chartData'));
     }
 
     public function refresh()

@@ -70,7 +70,10 @@
     </style>
 </head>
 <body>
-    <a href="/coins">&larr; Terug naar dashboard</a>
+    <nav style="margin-bottom: 20px;">
+        <a href="/coins" style="color: #e0e0e0; margin-right: 15px;">Dashboard</a>
+        <a href="/contact" style="color: #f5c542;">Contact</a>
+    </nav>
     <h1>Contact</h1>
 
     @if (session('success'))
